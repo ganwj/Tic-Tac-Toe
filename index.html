@@ -13,7 +13,35 @@
     </head>
     <body>
         <div class="container">
-            <div class="board"></div>
+            <header class="header">Tic Tac Toe</header>
+            <div class="play-area">
+                <p class="turn"></p>
+                <div class="player player-1">
+                    <p>
+                        Player 1 (
+                        <span class="fa-regular fa-circle fa-2xs"></span> ):
+                    </p>
+                    <p class="score-1"></p>
+                </div>
+                <div class="board"></div>
+                <div class="player player-2">
+                    <p>
+                        Player 2 (
+                        <span class="fa-solid fa-xmark fa-2xs"></span> ):
+                    </p>
+                    <p class="score-2"></p>
+                </div>
+                <div class="controls">
+                    <button type="button" class="restart">New round</button>
+                    <button type="button" class="reset">New game</button>
+                </div>
+            </div>
+            <dialog>
+                <p class="result"></p>
+                <form method="dialog">
+                    <button type="submit" autofocus>OK</button>
+                </form>
+            </dialog>
         </div>
     </body>
 </html>

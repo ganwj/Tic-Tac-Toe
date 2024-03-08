@@ -5,7 +5,7 @@ html {
     font-size: 62.5%;
 }
 
-* {
+*:not(dialog) {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -13,18 +13,16 @@ html {
 
 :root {
     /* Color Palette */
-    --primary-color: #fc2669;
-    --primary-color-tint: #fc3c78;
-    --primary-color-shade: #e3225f;
-    --background-color: #e2e8f0;
-    --text-color: #333;
-    --gray: #5c5c5c;
+    --primary-color: #719bef;
+    --primary-color-shade: #668cd7;
+    --background-color: #b0c7f6;
+    --text-color: #326ee8;
     --white: #fff;
 }
 
 body {
-    font-family: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans",
-        Arial, sans-serif;
+    font-family: "Segoe Print", "Bradley Hand", Chilanka, TSCu_Comic, casual,
+        cursive;
     font-weight: normal;
     font-size: 1.6rem;
     color: var(--text-color);
@@ -43,62 +41,183 @@ input {
 button {
     padding: 0.8rem 1.6rem;
     border: none;
-    border-radius: 8px;
+    border-radius: 0.8rem;
     color: var(--white);
     background-color: var(--primary-color);
     font-weight: 700;
-    font-size: 1.4rem;
     cursor: pointer;
     white-space: nowrap;
 }
 
 button:hover {
-    background-color: var(--primary-color-tint);
-}
-
-button:active {
     background-color: var(--primary-color-shade);
 }
 
+button:active {
+    background-color: var(--white);
+    color: var(--text-color);
+}
+
+button:focus {
+    outline: 2px solid var(--text-color);
+}
+
 /***************************
-    GAMEBOARD STYLES
+    CONTENT STYLES
 ***************************/
 .cell {
-    border: 1px solid var(--primary-color);
-    height: 100px;
-    width: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     font-size: 5rem;
-    color: var(--primary-color);
+    color: var(--text-color);
 }
 
-.row {
-    width: 300px;
+.board {
+    width: min(85vw, 30rem);
+    height: min(85vw, 30rem);
     display: grid;
+    gap: 0.5rem;
     grid-template-columns: repeat(3, 1fr);
-}
-
-.row .cell:nth-child(1) {
-    border-left: none;
-}
-
-.row .cell:nth-child(3) {
-    border-right: none;
-}
-
-.row:first-child .cell {
-    border-top: none;
-}
-
-.row:last-child .cell {
-    border-bottom: none;
+    grid-template-rows: repeat(3, 1fr);
 }
 
 .container {
+    min-height: 100lvh;
+    background-color: var(--background-color);
     display: flex;
-    margin-top: 10rem;
+    flex-direction: column;
+}
+
+.header {
+    background-color: var(--primary-color);
+    padding: 1rem;
+    font-size: 3rem;
+    color: var(--white);
+    display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.play-area {
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: center;
+    flex-grow: 1;
+    padding: 3rem 0;
+}
+
+.player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 2.8rem;
+}
+
+.player p:first-child {
+    display: flex;
+    align-items: baseline;
+}
+
+.player-1 {
+    margin-bottom: 2rem;
+}
+
+.player-2 {
+    margin-top: 2rem;
+}
+
+.turn {
+    font-weight: 700;
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+}
+
+.controls {
+    margin-top: 2rem;
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+/***************************
+    DIALOG STYLES
+***************************/
+dialog {
+    border-radius: 1rem;
+    padding: 2.5rem 3rem;
+    font-size: 2rem;
+    box-sizing: border-box;
+    min-width: 20rem;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+dialog button {
+    padding: 0.4rem 1.2rem;
+    margin-top: 3rem;
+    font-size: 1.4rem;
+}
+
+@media screen and (min-width: 769px) {
+    .play-area {
+        grid-template-rows: repeat(3, auto);
+        grid-template-columns: repeat(3, auto);
+        align-content: center;
+        padding: 0 2rem 4rem;
+        column-gap: 5rem;
+    }
+
+    .board {
+        grid-column: 2;
+        grid-row: 2 / 4;
+    }
+
+    .turn {
+        grid-column: 2;
+        margin-bottom: 4rem;
+        justify-self: center;
+    }
+
+    .player-1 {
+        grid-column: 1;
+        margin-bottom: 0;
+        align-self: center;
+    }
+
+    .player-2 {
+        grid-column: 1;
+        margin-top: 0;
+        align-self: start;
+    }
+
+    .controls {
+        margin: 0;
+        display: contents;
+    }
+
+    .controls button {
+        font-size: 1.8rem;
+    }
+
+    .restart {
+        grid-column: 3;
+        grid-row: 2;
+        align-self: center;
+    }
+
+    .reset {
+        grid-column: 3;
+        grid-row: 3;
+        align-self: start;
+    }
+
+    .player {
+        font-size: 2.6rem;
+    }
 }
