@@ -1,0 +1,104 @@
+/***************************
+    GENERAL STYLES
+***************************/
+html {
+    font-size: 62.5%;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette */
+    --primary-color: #fc2669;
+    --primary-color-tint: #fc3c78;
+    --primary-color-shade: #e3225f;
+    --background-color: #e2e8f0;
+    --text-color: #333;
+    --gray: #5c5c5c;
+    --white: #fff;
+}
+
+body {
+    font-family: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans",
+        Arial, sans-serif;
+    font-weight: normal;
+    font-size: 1.6rem;
+    color: var(--text-color);
+}
+
+li {
+    list-style: none;
+}
+
+button,
+input {
+    font-family: inherit;
+    font-size: 100%;
+}
+
+button {
+    padding: 0.8rem 1.6rem;
+    border: none;
+    border-radius: 8px;
+    color: var(--white);
+    background-color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.4rem;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+button:hover {
+    background-color: var(--primary-color-tint);
+}
+
+button:active {
+    background-color: var(--primary-color-shade);
+}
+
+/***************************
+    GAMEBOARD STYLES
+***************************/
+.cell {
+    border: 1px solid var(--primary-color);
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 5rem;
+    color: var(--primary-color);
+}
+
+.row {
+    width: 300px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.row .cell:nth-child(1) {
+    border-left: none;
+}
+
+.row .cell:nth-child(3) {
+    border-right: none;
+}
+
+.row:first-child .cell {
+    border-top: none;
+}
+
+.row:last-child .cell {
+    border-bottom: none;
+}
+
+.container {
+    display: flex;
+    margin-top: 10rem;
+    justify-content: center;
+}
